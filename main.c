@@ -3,27 +3,28 @@
 #include "nodes.h"
 
 int main() {
-  struct node *headOfList;
-  headOfList = calloc(sizeof(struct node), 1);
+  struct node *headOfList = NULL;
 
   printf("Printing an empty list:\n");
   printList(headOfList);
   printf("\n");
 
+  //headOfList = calloc(sizeof(struct node), 1);
 
-  printf("populating the list with the following numbers, in that order: 1 2 3 4 3 2 1\n\n");
+  printf("populating the list\n\n");
 
-  headOfList = insertAtFront(headOfList, 1);
-  headOfList = insertAtFront(headOfList, 2);
-  headOfList = insertAtFront(headOfList, 3);
-  headOfList = insertAtFront(headOfList, 4);
-  headOfList = insertAtFront(headOfList, 3);
-  headOfList = insertAtFront(headOfList, 2);
-  headOfList = insertAtFront(headOfList, 1);
+  headOfList = insertAtFront(headOfList, "one");
+  headOfList = insertAtFront(headOfList, "two");
+  headOfList = insertAtFront(headOfList, "three");
+  headOfList = insertAtFront(headOfList, "four");
+  headOfList = insertAtFront(headOfList, "three");
+  headOfList = insertAtFront(headOfList, "two");
+  headOfList = insertAtFront(headOfList, "one");
 
   printf("printing list\n");
   printList(headOfList);
   printf("\n");
+  /*
 
   printf("removing middle node, value of node should be 4\n");
   headOfList = removeNode(headOfList, 4);
@@ -39,5 +40,6 @@ int main() {
 
   printf("printing list, the method will catch the null pointer: \n");
   printList(headOfList);
+  */
   return 0;
 }
