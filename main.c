@@ -32,7 +32,6 @@ int main() {
   printList(headOfList);
   printf("\n");
 
-  /*
   printf("Freeing entire list\n");
   headOfList = freeList(headOfList);
   //the first freeList print message, with "Freeing" instead of "freeing",
@@ -41,6 +40,5 @@ int main() {
 
   printf("printing list, the method will catch the null pointer: \n");
   printList(headOfList);
-  */
   return 0;
 }

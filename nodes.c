@@ -44,12 +44,12 @@ struct node * removeNode(struct node *headOfList, char *target) {
 
 struct node * freeList(struct node *headOfList) {
   if (headOfList->nextNode == NULL) {
-    printf("Freeing node with the value of %i (base case)\n", headOfList->songName);
+    printf("Freeing node with the value of %s (base case)\n", headOfList->songName);
     free(headOfList);
   }
   else {
     freeList(headOfList->nextNode);
-    printf("freeing node with the value of %i (recursive case)\n", headOfList->songName);
+    printf("freeing node with the value of %s (recursive case)\n", headOfList->songName);
     free(headOfList);
   }
   return NULL;
