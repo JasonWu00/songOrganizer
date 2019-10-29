@@ -24,14 +24,15 @@ int main() {
   printf("printing list\n");
   printList(headOfList);
   printf("\n");
-  /*
 
-  printf("removing middle node, value of node should be 4\n");
-  headOfList = removeNode(headOfList, 4);
+  printf("removing middle node, value of node should be \"four\"\n");
+  char test[100] = "four";
+  headOfList = removeNode(headOfList, test);
   printf("printing list\n");
   printList(headOfList);
   printf("\n");
 
+  /*
   printf("Freeing entire list\n");
   headOfList = freeList(headOfList);
   //the first freeList print message, with "Freeing" instead of "freeing",

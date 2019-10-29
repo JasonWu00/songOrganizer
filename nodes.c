@@ -23,16 +23,19 @@ struct node * insertAtFront(struct node *headOfList, char *cargo) {
 
 struct node * removeNode(struct node *headOfList, char *target) {
   //renamed method due to conflict with existing inbuilt remove
-  if (headOfList->nextNode != NULL && headOfList->nextNode->songName != target) {
+  struct node *next = headOfList->nextNode;
+  int isEqual = strcmp(next->songName, target);
+  if (headOfList->nextNode != NULL && isEqual != 0) {
     removeNode(headOfList->nextNode, target);
   }
   if (headOfList->nextNode == NULL) {
+    printf("Node with value of %s not found\n", *target);
     return headOfList;
   }
-  if (headOfList->nextNode->songName == target) {
+  if (isEqual == 0) {
     struct node *restOfList = headOfList->nextNode->nextNode;
     struct node *ax = headOfList->nextNode;
-    printf("Removing node with the value of %i\n", ax->songName);
+    printf("Removing node with the value of %s\n", ax->songName);
     free(ax);
     headOfList->nextNode = restOfList;
   }
