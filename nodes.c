@@ -14,28 +14,29 @@ void printList(struct node *headOfList) {
   printf("]\n");
 }
 
-struct node * insertAtFront(struct node *headOfList, char *cargo) {
+struct node * insertAtFront(struct node *headOfList, char *newSong, char *newArtist) {
   struct node *newHead = calloc(sizeof(struct node), 1);
   newHead->nextNode = headOfList;
-  strcpy(newHead->songName, cargo);
+  strcpy(newHead->songName, newSong);
+  strcpy(newHead->artist, newArtist);
   return newHead;
 }
 
-struct node * removeNode(struct node *headOfList, char *target) {
+struct node * removeNode(struct node *headOfList, char *targetSong, char *targetArtist) {
   //renamed method due to conflict with existing inbuilt remove
   struct node *next = headOfList->nextNode;
-  int isEqual = strcmp(next->songName, target);
+  int isEqual = strcmp(next->songName, targetSong) + strcmp(next->artist, targetArtist);
   if (headOfList->nextNode != NULL && isEqual != 0) {
-    removeNode(headOfList->nextNode, target);
+    removeNode(headOfList->nextNode, targetSong, targetArtist);
   }
   if (headOfList->nextNode == NULL) {
-    printf("Node with value of %s not found\n", *target);
+    printf("Node with value of %s | %s not found\n", *targetArtist, *targetSong);
     return headOfList;
   }
   if (isEqual == 0) {
     struct node *restOfList = headOfList->nextNode->nextNode;
     struct node *ax = headOfList->nextNode;
-    printf("Removing node with the value of %s\n", ax->songName);
+    printf("Removing node with the value of %s | %s\n", ax->artist, ax->songName);
     free(ax);
     headOfList->nextNode = restOfList;
   }
@@ -44,20 +45,22 @@ struct node * removeNode(struct node *headOfList, char *target) {
 
 struct node * freeList(struct node *headOfList) {
   if (headOfList->nextNode == NULL) {
-    printf("Freeing node with the value of %s (base case)\n", headOfList->songName);
+    printf("freeing node with the value of %s | %s\n", headOfList->artist, headOfList->songName);
     free(headOfList);
   }
   else {
     freeList(headOfList->nextNode);
-    printf("freeing node with the value of %s (recursive case)\n", headOfList->songName);
+    printf("freeing node with the value of %s | %s\n", headOfList->artist, headOfList->songName);
     free(headOfList);
   }
   return NULL;
 }
 
 void printSingleNode(struct node *headOfList) { //helper function
-  if (headOfList->songName != NULL) {
+  if (headOfList->songName != NULL && headOfList->artist != NULL) {
     printf(" ");
+    printf(headOfList->artist);
+    printf(" | ");
     printf(headOfList->songName);
     printf(" ");
   }

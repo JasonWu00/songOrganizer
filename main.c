@@ -9,25 +9,22 @@ int main() {
   printList(headOfList);
   printf("\n");
 
-  //headOfList = calloc(sizeof(struct node), 1);
-
   printf("populating the list\n\n");
 
-  headOfList = insertAtFront(headOfList, "one");
-  headOfList = insertAtFront(headOfList, "two");
-  headOfList = insertAtFront(headOfList, "three");
-  headOfList = insertAtFront(headOfList, "four");
-  headOfList = insertAtFront(headOfList, "three");
-  headOfList = insertAtFront(headOfList, "two");
-  headOfList = insertAtFront(headOfList, "one");
+  headOfList = insertAtFront(headOfList, "one", "example");
+  headOfList = insertAtFront(headOfList, "two", "example");
+  headOfList = insertAtFront(headOfList, "three", "example");
+  headOfList = insertAtFront(headOfList, "four", "example");
+  headOfList = insertAtFront(headOfList, "three", "example");
+  headOfList = insertAtFront(headOfList, "two", "example");
+  headOfList = insertAtFront(headOfList, "one", "example");
 
   printf("printing list\n");
   printList(headOfList);
   printf("\n");
 
-  printf("removing middle node, value of node should be \"four\"\n");
-  char test[100] = "four";
-  headOfList = removeNode(headOfList, test);
+  printf("removing middle node, value of node should be \"example | four\"\n");
+  headOfList = removeNode(headOfList, "four", "example");
   printf("printing list\n");
   printList(headOfList);
   printf("\n");
@@ -40,5 +37,7 @@ int main() {
 
   printf("printing list, the method will catch the null pointer: \n");
   printList(headOfList);
+  /*
+  */
   return 0;
 }
