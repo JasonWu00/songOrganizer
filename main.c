@@ -11,13 +11,13 @@ int main() {
 
   printf("populating the list\n\n");
 
-  headOfList = insertAtFront(headOfList, "one", "example");
-  headOfList = insertAtFront(headOfList, "two", "example");
-  headOfList = insertAtFront(headOfList, "three", "example");
-  headOfList = insertAtFront(headOfList, "four", "example");
-  headOfList = insertAtFront(headOfList, "three", "example");
-  headOfList = insertAtFront(headOfList, "two", "example");
-  headOfList = insertAtFront(headOfList, "one", "example");
+  headOfList = insertAtFront(headOfList, "Tears in Heaven", "Eric Clapton");
+  headOfList = insertAtFront(headOfList, "Stairway to Heaven", "Led Zeppelin");
+  headOfList = insertAtFront(headOfList, "Highway to Hell", "ACDC");
+  headOfList = insertAtFront(headOfList, "Crossroads", "Eric Clapton");
+  headOfList = insertAtFront(headOfList, "Hey Jude", "The Beatles");
+  headOfList = insertAtFront(headOfList, "Coda", "Led Zeppelin");
+  headOfList = insertAtFront(headOfList, "I Wanna Hold Your Hand", "The Beatles");
 
   printf("printing list\n");
   printList(headOfList);

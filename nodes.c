@@ -68,3 +68,13 @@ void printSingleNode(struct node *headOfList) { //helper function
     printSingleNode(headOfList->nextNode);
   }
 }
+
+struct node *findSong(struct node *no, char *search) {
+  while(no != NULL) {
+    if(strcmp(search, no->songName) == 0) {
+      return no;
+    }
+    no = no->next;
+  }
+  return NULL;
+}
