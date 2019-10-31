@@ -26,6 +26,9 @@ int main() {
   printf("Finding hey jude:\n");
   printSingleNode(findSong(headOfList, "Hey Jude"));
   printf("\n");
+  printf("Finding imagine:\n");
+  printSingleNode(findSong(headOfList, "Imagine"));
+  printf("\n");
 
   printf("removing middle node, value of node should be \"Eric Clapton | Crossroads\"\n");
   headOfList = removeNode(headOfList, "Crossroads", "Eric Clapton");

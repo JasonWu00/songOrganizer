@@ -58,14 +58,14 @@ struct node * freeList(struct node *headOfList) {
 
 void printSingleNode(struct node *headOfList) { //helper function
   if (headOfList->songName != NULL && headOfList->artist != NULL) {
-    printf(" ");
+    printf("[");
     printf(headOfList->artist);
     printf(" | ");
     printf(headOfList->songName);
-    printf(" ");
+    printf("]");
   }
-  if (headOfList->nextNode != NULL) {
-    printSingleNode(headOfList->nextNode);
+  else {
+    printf("Song not found");
   }
 }
 
