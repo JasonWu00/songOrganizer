@@ -23,8 +23,12 @@ int main() {
   printList(headOfList);
   printf("\n");
 
-  printf("removing middle node, value of node should be \"example | four\"\n");
-  headOfList = removeNode(headOfList, "four", "example");
+  printf("Finding hey jude:\n");
+  printSingleNode(findSong(headOfList, "Hey Jude"));
+  printf("\n");
+
+  printf("removing middle node, value of node should be \"Eric Clapton | Crossroads\"\n");
+  headOfList = removeNode(headOfList, "Crossroads", "Eric Clapton");
   printf("printing list\n");
   printList(headOfList);
   printf("\n");
