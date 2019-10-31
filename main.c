@@ -9,6 +9,7 @@ int main() {
   printList(headOfList);
   printf("\n");
 
+  //headOfList = calloc(sizeof(struct node), 1);
   printf("populating the list\n\n");
 
   headOfList = insertAtFront(headOfList, "Tears in Heaven", "Eric Clapton");
@@ -23,8 +24,8 @@ int main() {
   printList(headOfList);
   printf("\n\n");
 
-  printf("Finding hey jude:\n");
-  printSingleNode(findSong(headOfList, "Hey Jude"));
+  printf("Finding crossroads:\n");
+  printSingleNode(findSong(headOfList, "Crossroads"));
   printf("\n");
   printf("Finding imagine:\n");
   printSingleNode(findSong(headOfList, "Imagine"));
@@ -39,6 +40,10 @@ int main() {
   printf("removing middle node, value of node should be \"Eric Clapton | Crossroads\"\n");
   headOfList = removeNode(headOfList, "Crossroads", "Eric Clapton");
   printf("printing list\n");
+  printf("\n");
+  printf("removing node of \"StringStorm | Cadian Blood\", which does not exist\n");
+  headOfList = removeNode(headOfList, "Cadian Blood", "StringStorm");
+
   printList(headOfList);
   printf("\n\n");
 
