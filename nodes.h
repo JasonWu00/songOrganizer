@@ -10,4 +10,5 @@ struct node * freeList(struct node *headOfList);
 struct node * removeNode(struct node *headOfList, char *targetSong, char *targetArtist);
 struct node *findSong(struct node *no, char *search);
 struct node *findSongByArtist(struct node *no, char *search);
+struct node *randomSong(struct node *no);
 void printSingleNode(struct node *headOfList); //helper function
