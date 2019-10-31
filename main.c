@@ -8,6 +8,8 @@ int main() {
 
   struct node *headOfList = NULL;
 
+  printf("-----TESTING LINKED LIST-----\n\n");
+
   printf("Printing an empty list:\n");
   printList(headOfList);
   printf("\n");
@@ -57,6 +59,8 @@ int main() {
 
   printf("printing list, the method will catch the null pointer: \n");
   printList(headOfList);
+
+  printf("-----TESTING SONG LIBRARY-----\n\n");
   /*
   */
   return 0;
