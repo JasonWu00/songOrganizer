@@ -1,9 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "nodes.h"
 
 int main() {
+  srand(time(NULL));
+
   struct node *headOfList = NULL;
+
+  printf("-----TESTING LINKED LIST-----\n\n");
 
   printf("Printing an empty list:\n");
   printList(headOfList);
@@ -37,6 +42,10 @@ int main() {
   printSingleNode(findSongByArtist(headOfList, "Guns n Roses"));
   printf("\n\n");
 
+  printf("Finding random song:\n");
+  printSingleNode(randomSong(headOfList));
+  printf("\n\n");
+
   printf("removing middle node, value of node should be \"Eric Clapton | Crossroads\"\n");
   headOfList = removeNode(headOfList, "Crossroads", "Eric Clapton");
   printf("printing list\n");
@@ -55,6 +64,8 @@ int main() {
 
   printf("printing list, the method will catch the null pointer: \n");
   printList(headOfList);
+
+  printf("-----TESTING SONG LIBRARY-----\n\n");
   /*
   */
   return 0;
