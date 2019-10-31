@@ -31,7 +31,7 @@ struct node * insertAtFront(struct node *headOfList, char *newSong, char *newArt
   return newHead;
 }
 
-struct node * removeNode(struct node *headOfList, const char *targetSong, const char *targetArtist) {
+struct node * removeNode(struct node *headOfList, char *targetSong, char *targetArtist) {
   //renamed method due to conflict with existing inbuilt remove
   char song[100];
   char artist[100];
@@ -46,18 +46,18 @@ struct node * removeNode(struct node *headOfList, const char *targetSong, const 
   int thisArtistEqual = abs(strcmp(headOfList->artist, artist));
 
   int nextIsEqual = nextSongEqual + nextArtistEqual;
-  int thisIsEqual = thisSongEqual + thisArtistEqual;
 
-  printf("DEBUG: thisIsEqual: %i, nextIsEqual: %i\n", thisIsEqual, nextIsEqual);
+  printf("DEBUG: current node has value of %s | %s\n", headOfList->artist, headOfList->songName);
+  printf("DEBUG: %i, %i\n", thisSongEqual, thisArtistEqual);
 
-  if (thisIsEqual == 0) {
+  if (thisSongEqual == 0 && thisArtistEqual == 0) {
     printf("Removing node with the value of %s | %s\n", headOfList->artist, headOfList->songName);
     struct node *next = headOfList->nextNode;
     free(headOfList);
     return next;
   }
 
-  if (nextIsEqual == 0) {
+  if (nextSongEqual == 0 && nextArtistEqual == 0) {
     struct node *restOfList = headOfList->nextNode->nextNode;
     struct node *ax = headOfList->nextNode;
     printf("Removing node with the value of %s | %s\n", ax->artist, ax->songName);
@@ -66,7 +66,10 @@ struct node * removeNode(struct node *headOfList, const char *targetSong, const 
     return headOfList;
   }
 
+
+
   if (headOfList->nextNode != NULL && nextIsEqual != 0) {
+    printf("Node not yet found\n");
     removeNode(headOfList->nextNode, targetSong, targetArtist);
   }
 
@@ -74,12 +77,8 @@ struct node * removeNode(struct node *headOfList, const char *targetSong, const 
     printf("Node with value of %s | %s not found\n", targetArtist, targetSong);
     return headOfList;
   }
-  /*
-  struct node nodeToAx = findSongByArtist(headOfList, targetSong);
-  printf("Removing node with the value of %s | %s\n", nodeToAx->artist, nodeToAx->songName);
-  free(nodeToAx);
+  printf("\n");
   return headOfList;
-  */
 }
 
 struct node * freeList(struct node *headOfList) {
