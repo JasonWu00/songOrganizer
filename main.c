@@ -1,18 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include "nodes.h"
 
 int main() {
-  srand(time(NULL));
-
   struct node *headOfList = NULL;
-
-  printf("-----TESTING LINKED LIST-----\n\n");
 
   printf("Printing an empty list:\n");
   printList(headOfList);
   printf("\n");
+
+  printf("-----TESTING LINKED LIST-----\n\n");
 
   //headOfList = calloc(sizeof(struct node), 1);
   printf("populating the list\n\n");
@@ -40,10 +37,6 @@ int main() {
   printf("\n");
   printf("Finding first song by Guns n Roses:\n");
   printSingleNode(findSongByArtist(headOfList, "Guns n Roses"));
-  printf("\n\n");
-
-  printf("Finding random song:\n");
-  printSingleNode(randomSong(headOfList));
   printf("\n\n");
 
   printf("removing middle node, value of node should be \"Eric Clapton | Crossroads\"\n");
