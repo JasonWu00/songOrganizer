@@ -5,7 +5,7 @@
 
 void printList(struct node *headOfList) {
   if(headOfList == NULL) {
-    printf("[ List is empty ]");
+    printf("[ List is empty ]\n");
   }
   else {
     printf("[");
@@ -19,7 +19,7 @@ void printList(struct node *headOfList) {
       }
       headOfList = headOfList->nextNode;
     }
-    printf("]");
+    printf("]\n");
   }
 }
 
@@ -33,11 +33,22 @@ struct node * insertAtFront(struct node *headOfList, char *newSong, char *newArt
 
 struct node * removeNode(struct node *headOfList, const char *targetSong, const char *targetArtist) {
   //renamed method due to conflict with existing inbuilt remove
-  char *song = targetSong;
-  char *artist = targetArtist;
+  char song[100];
+  char artist[100];
+  strcpy(song, targetSong);
+  strcpy(artist, targetArtist);
   struct node *next = headOfList->nextNode;
-  int nextIsEqual = strcmp(next->songName, song) + strcmp(next->artist, artist);
-  int thisIsEqual = strcmp(headOfList->songName, song) + strcmp(headOfList->artist, artist);
+
+  int nextSongEqual = abs(strcmp(next->songName, song));
+  int nextArtistEqual = strcmp(next->artist, artist);
+  //using abs() causes a seg fault, so I used an alternative
+  int thisSongEqual = abs(strcmp(headOfList->songName, song));
+  int thisArtistEqual = abs(strcmp(headOfList->artist, artist));
+
+  int nextIsEqual = nextSongEqual + nextArtistEqual;
+  int thisIsEqual = thisSongEqual + thisArtistEqual;
+
+  printf("DEBUG: thisIsEqual: %i, nextIsEqual: %i\n", thisIsEqual, nextIsEqual);
 
   if (thisIsEqual == 0) {
     printf("Removing node with the value of %s | %s\n", headOfList->artist, headOfList->songName);
