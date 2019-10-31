@@ -9,4 +9,5 @@ struct node * insertAtFront(struct node *headOfList, char *newSong, char *newArt
 struct node * freeList(struct node *headOfList);
 struct node * removeNode(struct node *headOfList, char *targetSong, char *targetArtist);
 struct node *findSong(struct node *no, char *search);
+struct node *findSongByArtist(struct node *no, char *search);
 void printSingleNode(struct node *headOfList); //helper function

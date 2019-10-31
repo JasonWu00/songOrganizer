@@ -21,20 +21,26 @@ int main() {
 
   printf("printing list\n");
   printList(headOfList);
-  printf("\n");
+  printf("\n\n");
 
   printf("Finding hey jude:\n");
   printSingleNode(findSong(headOfList, "Hey Jude"));
   printf("\n");
   printf("Finding imagine:\n");
   printSingleNode(findSong(headOfList, "Imagine"));
+  printf("\n\n");
+  printf("Finding first song by led zeppelin:\n");
+  printSingleNode(findSongByArtist(headOfList, "Led Zeppelin"));
   printf("\n");
+  printf("Finding first song by Guns n Roses:\n");
+  printSingleNode(findSongByArtist(headOfList, "Guns n Roses"));
+  printf("\n\n");
 
   printf("removing middle node, value of node should be \"Eric Clapton | Crossroads\"\n");
   headOfList = removeNode(headOfList, "Crossroads", "Eric Clapton");
   printf("printing list\n");
   printList(headOfList);
-  printf("\n");
+  printf("\n\n");
 
   printf("Freeing entire list\n");
   headOfList = freeList(headOfList);

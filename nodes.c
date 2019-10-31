@@ -67,7 +67,7 @@ void printSingleNode(struct node *headOfList) { //helper function
     printf("]");
   }
   else {
-    printf("Song not found");
+    printf("");
   }
 }
 
@@ -78,5 +78,17 @@ struct node *findSong(struct node *no, char *search) {
     }
     no = no->nextNode;
   }
+  printf("Song not found!");
+  return NULL;
+}
+
+struct node *findSongByArtist(struct node *no, char *search) {
+  while(no != NULL) {
+    if(strcmp(search, no->artist) == 0) {
+      return no;
+    }
+    no = no->nextNode;
+  }
+  printf("No songs by this artist found!\n");
   return NULL;
 }
