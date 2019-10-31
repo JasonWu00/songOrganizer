@@ -4,14 +4,16 @@
 #include "nodes.h"
 
 void printList(struct node *headOfList) {
-  printf("[");
-  if (headOfList != NULL) {
-    printSingleNode(headOfList);
-  }
+  if(headOfList == NULL) {printf("List is empty");}
   else {
-    printf(" EMPTY LIST ");
+    printf("[");
+    while(headOfList != NULL) {
+      printf("%s | ", headOfList->artist);
+      printf("%s ; ", headOfList->songName);
+      headOfList = headOfList->nextNode;
+    }
+    printf("]");
   }
-  printf("]\n");
 }
 
 struct node * insertAtFront(struct node *headOfList, char *newSong, char *newArtist) {
