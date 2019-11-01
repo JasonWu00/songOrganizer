@@ -31,6 +31,7 @@ struct node * insertAtFront(struct node *headOfList, char *newSong, char *newArt
   return newHead;
 }
 
+/*
 struct node * removeNode(struct node *headOfList, char *targetSong, char *targetArtist) {
   //renamed method due to conflict with existing inbuilt remove
   char song[100];
@@ -66,8 +67,6 @@ struct node * removeNode(struct node *headOfList, char *targetSong, char *target
     return headOfList;
   }
 
-
-
   if (headOfList->nextNode != NULL && nextIsEqual != 0) {
     printf("Node not yet found\n");
     removeNode(headOfList->nextNode, targetSong, targetArtist);
@@ -79,6 +78,35 @@ struct node * removeNode(struct node *headOfList, char *targetSong, char *target
   }
   printf("\n");
   return headOfList;
+}*/
+struct node * removeNode(struct node *headOfList, const char *targetSong, const char *targetArtist) {
+  char thisSong[25];
+  char thisArtist[25];
+  strcpy(thisSong, targetSong);
+  strcpy(thisArtist, targetArtist);
+  //base case, the current node is the one we must remove
+  int songCompare = strcmp(thisSong, headOfList->songName);
+  int artistCompare = strcmp(thisArtist, headOfList->artist);
+  //printf("DEBUG: thisSong: %s, thisArtist: %s\n", thisSong, thisArtist);
+  //printf("DEBUG: comparison of song: %i, comparison of artist: %i\n", songCompare, artistCompare);
+  if (songCompare == 0 && artistCompare == 0) {
+    printf("Removing node with the value of %s | %s\n", headOfList->artist, headOfList->songName);
+    struct node *restOfList = headOfList->nextNode;
+    free(headOfList);
+    return restOfList;
+  }
+  //recursive case, the current node is not the one we seek, and it is the end
+  else if (headOfList->nextNode == NULL) {
+    printf("Node with value of %s | %s not found\n", targetArtist, targetSong);
+    return headOfList;
+  }
+  //recursive case, the current node is not the one we seek and there are more nodes
+  else {
+    printf("Passing through node with values %s | %s\n", headOfList->artist, headOfList->songName);
+    headOfList->nextNode = removeNode(headOfList->nextNode, targetSong, targetArtist);
+    return headOfList;
+  }
+  printf("\n");
 }
 
 struct node * freeList(struct node *headOfList) {
