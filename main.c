@@ -14,17 +14,18 @@ int main() {
   //headOfList = calloc(sizeof(struct node), 1);
   printf("populating the list\n\n");
 
-  headOfList = insertAtFront(headOfList, "Tears in Heaven", "Eric Clapton");
-  headOfList = insertAtFront(headOfList, "Stairway to Heaven", "Led Zeppelin");
-  headOfList = insertAtFront(headOfList, "Highway to Hell", "ACDC");
+  headOfList = insertInOrder(headOfList, "Tears in Heaven", "Eric Clapton");
+  headOfList = insertInOrder(headOfList, "Stairway to Heaven", "Led Zeppelin");
+  headOfList = insertInOrder(headOfList, "Highway to Hell", "ACDC");
+  printf("printing list\n");
+  printList(headOfList);
+  printf("\n");
+  /*
   headOfList = insertAtFront(headOfList, "Crossroads", "Eric Clapton");
   headOfList = insertAtFront(headOfList, "Hey Jude", "The Beatles");
   headOfList = insertAtFront(headOfList, "Coda", "Led Zeppelin");
   headOfList = insertAtFront(headOfList, "I Wanna Hold Your Hand", "The Beatles");
 
-  printf("printing list\n");
-  printList(headOfList);
-  printf("\n");
 
   printf("Finding crossroads:\n");
   printSingleNode(findSong(headOfList, "Crossroads"));
@@ -61,7 +62,6 @@ int main() {
   printf("\n");
 
   printf("-----TESTING SONG LIBRARY-----\n\n");
-  /*
   */
   return 0;
 }
