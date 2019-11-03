@@ -9,3 +9,7 @@ nodes.o: nodes.c nodes.h
 
 run:
 	./testfile
+
+clean:
+	rm -rf *.o
+	rm -rf testfile.exe

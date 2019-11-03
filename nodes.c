@@ -43,50 +43,40 @@ struct node * insertInOrder(struct node *headOfList, char *newSong, char *newArt
   //check for correct artist position
   //if correct:
   printf("debug\n");
-  int artistCompare = strcmp(targetArtist, headOfList->artist);
-  int songCompare = strcmp(targetSong, headOfList->songName);
 
-  if (headOfList == NULL) {//special case
+  if (headOfList == NULL) {//special case, empty list
     printf("Inserting first node\n");
     headOfList = insertAtFront(headOfList, newSong, newArtist);
     return headOfList;
   }
 
-/* attempted hot fix, not working
-  else if (headOfList->nextNode == NULL && headOfList->previousNode == NULL) {
+  int artistCompare = strcmp(newArtist, headOfList->artist);
+  int songCompare = strcmp(newSong, headOfList->songName);
+
+  if (headOfList->nextNode == NULL && headOfList->previousNode == NULL) {
     //another special case, only 1 node in list
-    if (artistCompare > 0) {//node to insert go to back
-      headOfList = insertAtFront(headOfList, newSong, newArtist);
+    if (artistCompare < 0) {//node to insert go to back
+      printf("DEBUG: value of artistCompare: %i\n", artistCompare);
+      headOfList->previousNode = insertAtFront(headOfList, newSong, newArtist);
+      printf("Inserting second node at the front\n");
+      return headOfList->previousNode;
+    }
+    else {//node to insert go front
+      headOfList->nextNode = insertAtFront(headOfList->nextNode, newSong, newArtist);
       printf("Inserting second node at the back\n");
       return headOfList;
     }
-    else if (artistCompare < 0) {//node to insert go front
-      headOfList->nextNode = insertAtFront(headOfList, newSong, newArtist);
-      printf("Inserting second node at the front\n");
-      return headOfList;
-    }
-    else if (songCompare > 0) {//node goes in front
-      headOfList->nextNode = insertAtFront(headOfList, newSong, newArtist);
-      printf("Inserting second node at the back (2nd case)\n");
-      return headOfList;
-    }
-    else {//node goes in back
-      headOfList = insertAtFront(headOfList, newSong, newArtist);
-      printf("Inserting second node at the front (2nd case)\n");
-      return headOfList;
-    }
   }
-  */
 
-  else if (headOfList->nextNode == NULL) {//end of list reached
+  if (headOfList->nextNode == NULL) {//end of list reached
     printf("Somehow, the program reached the end. Guess I will plop down the node here.\n");
-    headOfList = insertAtFront(headOfList, newSong, newArtist);
+    headOfList->nextNode = insertAtFront(headOfList, newSong, newArtist);
     return headOfList;
   }
 
   else if (artistCompare <= 0) {
     //check for correct song position
-    if (strcmp(targetSong, headOfList->songName) <= 0) {//we found the proper place to insert the node
+    if (songCompare <= 0) {//we found the proper place to insert the node
       headOfList = insertAtFront(headOfList, newSong, newArtist);
       printf("We have found the correct position\n");
       return headOfList;
@@ -103,9 +93,9 @@ struct node * insertInOrder(struct node *headOfList, char *newSong, char *newArt
     printf("Not at the correct artist yet\n");
     headOfList->nextNode = insertInOrder(headOfList->nextNode, newSong, newArtist);
     return headOfList;
-    }
+    //no option for correct song position but not artist position
   }
-  //no option for correct song position but not artist position
+}
 
 struct node * removeNode(struct node *headOfList, const char *targetSong, const char *targetArtist) {
   char thisSong[25];

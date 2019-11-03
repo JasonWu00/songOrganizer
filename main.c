@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "nodes.h"
+#include "library.h"
 
 int main() {
   struct node *headOfList = NULL;
@@ -16,17 +18,16 @@ int main() {
 
   headOfList = insertInOrder(headOfList, "Tears in Heaven", "Eric Clapton");
   headOfList = insertInOrder(headOfList, "Stairway to Heaven", "Led Zeppelin");
-  printf("printing list\n");
-  printList(headOfList);
-  printf("\n");
-  printf("DEBUG: %i\n", strcmp("Led Zeppelin", "Eric Clapton"));
-  /*
   headOfList = insertInOrder(headOfList, "Highway to Hell", "ACDC");
   headOfList = insertInOrder(headOfList, "Crossroads", "Eric Clapton");
   headOfList = insertInOrder(headOfList, "Hey Jude", "The Beatles");
   headOfList = insertInOrder(headOfList, "Coda", "Led Zeppelin");
   headOfList = insertInOrder(headOfList, "I Wanna Hold Your Hand", "The Beatles");
 
+  printf("printing list\n");
+  printList(headOfList);
+  printf("\n");
+  /*
 
   printf("Finding crossroads:\n");
   printSingleNode(findSong(headOfList, "Crossroads"));

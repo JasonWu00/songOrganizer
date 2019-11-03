@@ -5,17 +5,22 @@
 #include "library.h"
 #include "nodes.h"
 
-struct node *array[27];
+struct node * table[27];
 
+char alphabet[53] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
 
-struct node *addSong(char *songName, char *artist) {
-//first letter of song title needs to always be upper case!
-  array[(int)artist[0] - 65] = insertInOrder(array[(int)artist[0] - 65], songName, artist);
-  return array[(int)artist[0]];
+struct node * addSong(char *songName, char *artist) {
+  char addArtist[25];
+  strcpy(addArtist, artist);
+  char *firstLetter = strchr(alphabet, addArtist[0]);
+  //first letter of song title needs to always be upper case!
+  //table[(int)artist[0] - 65] = insertInOrder(table[(int)artist[0] - 65], songName, artist);
+  //return table[(int)artist[0]];
 }
+/*
 
-struct node *searchSong(char *sn, char *art) {
-  struct node *no = array[(int)artist[0] - 65];
+struct node * searchSong(char *sn, char *art) {
+  struct node *no = table[(int)artist[0] - 65];
   for(no != NULL) {
     if(strcmp(sn, no->songName) == 0) {
       return no;
@@ -25,22 +30,24 @@ struct node *searchSong(char *sn, char *art) {
   return NULL;
 }
 
-bool searchArtist(char *art) {
-  struct node *no = array[(int)art[0] - 65];
+int searchArtist(char *art) {
+  struct node *no = table[(int)art[0] - 65];
   for(no != NULL) {
-    if(strcmp(art, no->artist) == 0) {return true;}
+    if(strcmp(art, no->artist) == 0) {
+      return true;
+    }
   }
-  return false;
+  return NULL;
 }
 
 void printLetter(char let) {
   int le = (int)let;
   if(le > 96) {le = le - 32;}
-  printList(array[le - 65]);
+  printList(table[le - 65]);
 }
 
 void printArtist(char *art) {
-  struct node *no = array[(int)art[0] - 65];
+  struct node *no = table[(int)art[0] - 65];
   for(no != NULL) {
     if(strcmp(art, no->artist) == 0) {
       printSingleNode(no);
@@ -50,14 +57,14 @@ void printArtist(char *art) {
 
 void printLib() {
   for(int q = 0; q < 27; q++) {
-    struct no = array[q];
+    struct no = table[q];
     printList(no);
   }
 }
 
-struct node *removeSong(char *sn) {
+struct node * removeSong(char *sn) {
   for(int q = 0; q < 27; q++) {
-    struct node *no = array[q];
+    struct node *no = table[q];
     struct node *begin = no;
     while(no != NULL) {
       if(strcmp(sn, no->songName) == 0) {
@@ -69,5 +76,6 @@ struct node *removeSong(char *sn) {
 }
 
 struct node *clearLib() {
-  
+
 }
+*/
