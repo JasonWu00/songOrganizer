@@ -5,21 +5,28 @@
 #include "library.h"
 #include "nodes.h"
 
-struct node * table[27];
-
-char alphabet[53] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
-char *alpha = &alphabet[53];
+int nthLetter(char *string) {
+  char alphabet[53] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
+  char strToCheck[25];
+  strcpy(strToCheck, string);
+  int counter = 0;
+  for (counter = 0; counter < 53; counter++) {
+    if (alphabet[counter] == strToCheck[0]) {
+      return counter;
+    }
+  }
+  return 0;
+}
 
 struct node * addSong(char *songName, char *artist) {
   char addArtist[25];
   strcpy(addArtist, artist);
-  char *firstLetter = strchr(alpha, addArtist[0]);
-  int nthLetter = firstLetter - &alphabet[0];
-  printf("DEBUG: the first letter (that being %c) is the %ith letter in the alphabet.\n", firstLetter, nthLetter);
+  int nth_letter = nthLetter(addArtist) / 2 + 1;
+  printf("DEBUG: the first letter (that being %c) is the %ith letter in the alphabet.\n", addArtist[0], nth_letter);
+
   //first letter of song title needs to always be upper case!
-  //table[(int)artist[0] - 65] = insertInOrder(table[(int)artist[0] - 65], songName, artist);
-  //return table[(int)artist[0]];
-  return NULL;
+  table[nth_letter] = insertInOrder(table[nth_letter], songName, artist);
+  return table[nth_letter];
 }
 /*
 

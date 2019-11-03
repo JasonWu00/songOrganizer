@@ -27,21 +27,23 @@ int main() {
   printf("printing list\n");
   printList(headOfList);
   printf("\n");
-  addSong("ExampleSong", "ExampleAuthor");
-  /*
+
+  printf("-----Testing finding node by song and artist-----\n\n");
 
   printf("Finding crossroads:\n");
-  printSingleNode(findSong(headOfList, "Crossroads"));
+  findSong(headOfList, "Crossroads");
   printf("\n");
   printf("Finding imagine:\n");
-  printSingleNode(findSong(headOfList, "Imagine"));
+  findSong(headOfList, "Imagine");
   printf("\n\n");
   printf("Finding first song by led zeppelin:\n");
-  printSingleNode(findSongByArtist(headOfList, "Led Zeppelin"));
+  findSongByArtist(headOfList, "Led Zeppelin");
   printf("\n");
   printf("Finding first song by Guns n Roses:\n");
-  printSingleNode(findSongByArtist(headOfList, "Guns n Roses"));
-  printf("\n\n");
+  findSongByArtist(headOfList, "Guns n Roses");
+  printf("\n");
+
+  printf("-----Testing remove nodes by value----\n\n");
 
   printf("removing middle node, value of node should be \"Eric Clapton | Crossroads\"\n");
   headOfList = removeNode(headOfList, "Crossroads", "Eric Clapton");
@@ -50,9 +52,13 @@ int main() {
   printf("\n");
   printf("removing node of \"StringStorm | Cadian Blood\", which is not in the list\n");
   headOfList = removeNode(headOfList, "Cadian Blood", "StringStorm");
+  printf("\n");
 
+  printf("After removing nodes:\n");
   printList(headOfList);
   printf("\n");
+
+  printf("-----Testing freeing entire list-----\n\n");
 
   printf("Freeing entire list\n");
   headOfList = freeList(headOfList);
@@ -65,6 +71,7 @@ int main() {
   printf("\n");
 
   printf("-----TESTING SONG LIBRARY-----\n\n");
+  /*
   */
   return 0;
 }

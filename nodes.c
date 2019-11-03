@@ -157,7 +157,8 @@ void printSingleNode(struct node *headOfList) { //helper function
 struct node *findSong(struct node *no, char *search) {
   while(no != NULL) {
     if(strcmp(search, no->songName) == 0) {
-      return no;
+      printSingleNode(no);
+      return NULL;
     }
     no = no->nextNode;
   }
@@ -168,7 +169,8 @@ struct node *findSong(struct node *no, char *search) {
 struct node *findSongByArtist(struct node *no, char *search) {
   while(no != NULL) {
     if(strcmp(search, no->artist) == 0) {
-      return no;
+      printList(no);
+      return NULL;
     }
     no = no->nextNode;
   }
