@@ -2,6 +2,7 @@ struct node{
   char songName[100];
   char artist[100];
   struct node *nextNode;
+  struct node *previousNode;
 };
 
 void printList(struct node *headOfList);
