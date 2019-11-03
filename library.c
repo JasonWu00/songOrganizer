@@ -8,14 +8,18 @@
 struct node * table[27];
 
 char alphabet[53] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
+char *alpha = &alphabet[53];
 
 struct node * addSong(char *songName, char *artist) {
   char addArtist[25];
   strcpy(addArtist, artist);
-  char *firstLetter = strchr(alphabet, addArtist[0]);
+  char *firstLetter = strchr(alpha, addArtist[0]);
+  int nthLetter = firstLetter - &alphabet[0];
+  printf("DEBUG: the first letter (that being %c) is the %ith letter in the alphabet.\n", firstLetter, nthLetter);
   //first letter of song title needs to always be upper case!
   //table[(int)artist[0] - 65] = insertInOrder(table[(int)artist[0] - 65], songName, artist);
   //return table[(int)artist[0]];
+  return NULL;
 }
 /*
 

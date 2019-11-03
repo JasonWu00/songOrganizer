@@ -14,7 +14,7 @@ int main() {
   printf("-----TESTING LINKED LIST-----\n\n");
 
   //headOfList = calloc(sizeof(struct node), 1);
-  printf("populating the list\n\n");
+  printf("populating the list, in order\n\n");
 
   headOfList = insertInOrder(headOfList, "Tears in Heaven", "Eric Clapton");
   headOfList = insertInOrder(headOfList, "Stairway to Heaven", "Led Zeppelin");
@@ -27,6 +27,7 @@ int main() {
   printf("printing list\n");
   printList(headOfList);
   printf("\n");
+  addSong("ExampleSong", "ExampleAuthor");
   /*
 
   printf("Finding crossroads:\n");
@@ -47,7 +48,7 @@ int main() {
   printf("printing list\n");
   printList(headOfList);
   printf("\n");
-  printf("removing node of \"StringStorm | Cadian Blood\", which does not exist\n");
+  printf("removing node of \"StringStorm | Cadian Blood\", which is not in the list\n");
   headOfList = removeNode(headOfList, "Cadian Blood", "StringStorm");
 
   printList(headOfList);
