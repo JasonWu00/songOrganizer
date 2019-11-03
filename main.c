@@ -17,14 +17,14 @@ int main() {
   headOfList = insertInOrder(headOfList, "Tears in Heaven", "Eric Clapton");
   headOfList = insertInOrder(headOfList, "Stairway to Heaven", "Led Zeppelin");
   headOfList = insertInOrder(headOfList, "Highway to Hell", "ACDC");
+  headOfList = insertInOrder(headOfList, "Crossroads", "Eric Clapton");
+  headOfList = insertInOrder(headOfList, "Hey Jude", "The Beatles");
+  headOfList = insertInOrder(headOfList, "Coda", "Led Zeppelin");
+  headOfList = insertInOrder(headOfList, "I Wanna Hold Your Hand", "The Beatles");
   printf("printing list\n");
   printList(headOfList);
   printf("\n");
   /*
-  headOfList = insertAtFront(headOfList, "Crossroads", "Eric Clapton");
-  headOfList = insertAtFront(headOfList, "Hey Jude", "The Beatles");
-  headOfList = insertAtFront(headOfList, "Coda", "Led Zeppelin");
-  headOfList = insertAtFront(headOfList, "I Wanna Hold Your Hand", "The Beatles");
 
 
   printf("Finding crossroads:\n");

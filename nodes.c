@@ -40,34 +40,35 @@ struct node * insertInOrder(struct node *headOfList, char *newSong, char *newArt
   //check for correct artist position
   //if correct:
   printf("debug\n");
+
   if (headOfList == NULL) {//special case
     printf("Inserting first node\n");
     headOfList = insertAtFront(headOfList, newSong, newArtist);
     return headOfList;
   }
 
-  if (headOfList->nextNode == NULL) {//end of list reached
+  else if (headOfList->nextNode == NULL) {//end of list reached
     printf("Somehow, the program reached the end. Guess I will plop down the node here.\n");
     headOfList = insertAtFront(headOfList, newSong, newArtist);
     return headOfList;
   }
 
-  if (strcmp(targetArtist[0], headOfList->artist[0]) < 0) {
+  else if (strcmp(targetArtist, headOfList->artist) < 0) {
     //check for correct song position
-    if (strcmp(targetSong[0], headOfList->songName[0]) < 0) {//we found the proper place to insert the node
-      insertAtFront(headOfList, newSong, newArtist);
+    if (strcmp(targetSong, headOfList->songName) < 0) {//we found the proper place to insert the node
+      headOfList = insertAtFront(headOfList, newSong, newArtist);
       printf("We have found the correct position\n");
       return headOfList;
     }
     else {//right artist, not the right song
-      headOfList->nextNode = insertInOrder(headOfList, newSong, newArtist);
+      headOfList->nextNode = insertInOrder(headOfList->nextNode, newSong, newArtist);
       printf("Correct artist but not correct position\n");
       return headOfList;
     }
   }
   else {//not at the right spot yet, keep moving
-    printf("Not at the corrct artist yet\n");
-    //headOfList->nextNode = insertInOrder(headOfList, newSong, newArtist);
+    printf("Not at the correct artist yet\n");
+    headOfList->nextNode = insertInOrder(headOfList->nextNode, newSong, newArtist);
     return headOfList;
   }
   //no option for correct song position but not artist position
