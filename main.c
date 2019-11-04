@@ -71,6 +71,14 @@ int main() {
   printf("\n");
 
   printf("-----TESTING SONG LIBRARY-----\n\n");
+
+  struct node * table[27];
+
+  printf("Printing empty library of lists (nothing will print)\n");
+  printEntireLibrary();
+
+  printf("Populating the library of lists\n");
+  
   /*
   */
   return 0;

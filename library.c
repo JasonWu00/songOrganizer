@@ -4,9 +4,9 @@
 #include <stdbool.h>
 #include "library.h"
 #include "nodes.h"
+char alphabet[53] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
 
 int nthLetter(char *string) {
-  char alphabet[53] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
   char strToCheck[25];
   strcpy(strToCheck, string);
   int counter = 0;
@@ -27,6 +27,20 @@ struct node * addSong(char *songName, char *artist) {
   //first letter of song title needs to always be upper case!
   table[nth_letter] = insertInOrder(table[nth_letter], songName, artist);
   return table[nth_letter];
+}
+
+void printEntireLibrary() {
+  int counter = 0;
+  for (counter = 0; counter < 27; counter++) {
+    if (table[counter] != NULL) {
+      printf("Artists starting with %c\n", alphabet[counter * 2]);
+      printList(table[counter]);
+      printf("\n");
+    }
+    else {
+      printf("");
+    }
+  }
 }
 /*
 
