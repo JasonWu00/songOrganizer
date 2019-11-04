@@ -140,9 +140,9 @@ struct node * removeNode(struct node *headOfList, const char *targetSong, const 
 
 struct node * freeList(struct node *headOfList) {
   if (headOfList == NULL) {
-    printf("List already cleared");
+    //printf("List already cleared\n");
   }
-  if (headOfList->nextNode == NULL) {
+  else if (headOfList->nextNode == NULL) {
     printf("freeing node with the value of %s | %s\n", headOfList->artist, headOfList->songName);
     free(headOfList);
   }

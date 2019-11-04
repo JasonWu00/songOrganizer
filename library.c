@@ -82,7 +82,7 @@ void printSongsByArtist(char *artistToFind) {
 struct node *clearLib() {
   int counter = 0;
   for (counter = 0; counter < 27; counter++) {
-    freeList(table[counter]);
+    table[counter] = freeList(table[counter]);
   }
   return NULL;
 }
