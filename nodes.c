@@ -58,12 +58,22 @@ struct node * insertInOrder(struct node *headOfList, char *newSong, char *newArt
     if (artistCompare < 0) {//node to insert go to back
       //printf("DEBUG: value of artistCompare: %i\n", artistCompare);
       headOfList->previousNode = insertAtFront(headOfList, newSong, newArtist);
-      //printf("Inserting second node at the front\n");
+      //printf("Inserting second node (value %s | %s) at the front\n", newArtist, newSong);
       return headOfList->previousNode;
     }
-    else {//node to insert go front
+    else if (artistCompare > 0){//node to insert go to front
       headOfList->nextNode = insertAtFront(headOfList->nextNode, newSong, newArtist);
-      //printf("Inserting second node at the back\n");
+      //printf("Inserting second node (value %s | %s) at the back\n", newArtist, newSong);
+      return headOfList;
+    }
+    else if (artistCompare == 0 && songCompare < 0) {//node go to front
+      headOfList->previousNode = insertAtFront(headOfList, newSong, newArtist);
+      //printf("Inserting second node (value %s | %s) at the front (second case)\n", newArtist, newSong);
+      return headOfList->previousNode;
+    }
+    else {//previousNode go to back
+      headOfList->nextNode = insertAtFront(headOfList->nextNode, newSong, newArtist);
+      //printf("Inserting second node (value %s | %s) at the back (second case)\n", newArtist, newSong);
       return headOfList;
     }
   }
@@ -129,6 +139,9 @@ struct node * removeNode(struct node *headOfList, const char *targetSong, const 
 }
 
 struct node * freeList(struct node *headOfList) {
+  if (headOfList == NULL) {
+    printf("List already cleared");
+  }
   if (headOfList->nextNode == NULL) {
     printf("freeing node with the value of %s | %s\n", headOfList->artist, headOfList->songName);
     free(headOfList);
@@ -157,7 +170,7 @@ void printSingleNode(struct node *headOfList) { //helper function
 struct node *findSong(struct node *no, char *search) {
   while(no != NULL) {
     if(strcmp(search, no->songName) == 0) {
-      printSingleNode(no);
+      //printSingleNode(no);
       return no;
     }
     no = no->nextNode;
@@ -169,8 +182,8 @@ struct node *findSong(struct node *no, char *search) {
 struct node *findSongByArtist(struct node *no, char *search) {
   while(no != NULL) {
     if(strcmp(search, no->artist) == 0) {
-      printList(no);
-      return NULL;
+      //printList(no);
+      return no;
     }
     no = no->nextNode;
   }

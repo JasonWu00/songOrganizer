@@ -90,8 +90,31 @@ int main() {
   printf("Printing populated library\n");
   printEntireLibrary();
 
-  printf("Finding song \"Highway to Hell\" by \"ACDC\"\n");
-  printSingleNode(searchSong("Highway to Hell", "ACDC"));
+  printf("-----Testing find song, find artist-----\n");
+  printf("-----and print songs by artists starting with specifc letter-----\n\n");
+
+  printf("Finding song \"I Wanna Hold Your Hand\" by \"The Beatles\"\n");
+  printSingleNode(searchSong("I Wanna Hold Your Hand", "The Beatles"));
+  printf("\n\n");
+
+  printf("Finding all songs by artist \"Led Zeppelin\"\n");
+  printSongsByArtist("Led Zeppelin");
+  printf("\n");
+
+  printf("Printing all songs with artists starting with E\n");
+  printLetter("E");
+  printf("\n\n");
+
+  printf("-----Testing removing single node-----\n\n");
+  printf("Removing song \"Highway to Hell\" by \"ACDC\"\n");
+  removeSong("Highway to Hell", "ACDC");
+  printf("Song removed, now printing list\n\n");
+  printEntireLibrary();
+
+  printf("-----Testing clearing library-----\n\n");
+  clearLib();
+  printf("Library cleared, now printing library (nothing will print)\n");
+  printEntireLibrary();
 
   /*
   */
