@@ -77,8 +77,22 @@ int main() {
   printf("Printing empty library of lists (nothing will print)\n");
   printEntireLibrary();
 
-  printf("Populating the library of lists\n");
-  
+  printf("Populating the library of lists\n\n");
+
+  addSong("Tears in Heaven", "Eric Clapton");
+  addSong("Stairway to Heaven", "Led Zeppelin");
+  addSong("Highway to Hell", "ACDC");
+  addSong("Crossroads", "Eric Clapton");
+  addSong("Hey Jude", "The Beatles");
+  addSong("Coda", "Led Zeppelin");
+  addSong("I Wanna Hold Your Hand", "The Beatles");
+
+  printf("Printing populated library\n");
+  printEntireLibrary();
+
+  printf("Finding song \"Highway to Hell\" by \"ACDC\"\n");
+  printSingleNode(searchSong("Highway to Hell", "ACDC"));
+
   /*
   */
   return 0;

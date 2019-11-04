@@ -158,7 +158,7 @@ struct node *findSong(struct node *no, char *search) {
   while(no != NULL) {
     if(strcmp(search, no->songName) == 0) {
       printSingleNode(no);
-      return NULL;
+      return no;
     }
     no = no->nextNode;
   }

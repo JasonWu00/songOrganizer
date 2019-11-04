@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
 #include "library.h"
 #include "nodes.h"
 char alphabet[53] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
@@ -21,8 +22,8 @@ int nthLetter(char *string) {
 struct node * addSong(char *songName, char *artist) {
   char addArtist[25];
   strcpy(addArtist, artist);
-  int nth_letter = nthLetter(addArtist) / 2 + 1;
-  printf("DEBUG: the first letter (that being %c) is the %ith letter in the alphabet.\n", addArtist[0], nth_letter);
+  int nth_letter = nthLetter(addArtist) / 2 ;
+  //printf("DEBUG: the first letter (that being %c) is the %ith letter in the alphabet.\n", addArtist[0], nth_letter);
 
   //first letter of song title needs to always be upper case!
   table[nth_letter] = insertInOrder(table[nth_letter], songName, artist);
@@ -33,7 +34,7 @@ void printEntireLibrary() {
   int counter = 0;
   for (counter = 0; counter < 27; counter++) {
     if (table[counter] != NULL) {
-      printf("Artists starting with %c\n", alphabet[counter * 2]);
+      printf("Artists starting with %c\n", toupper(alphabet[counter * 2]));
       printList(table[counter]);
       printf("\n");
     }
@@ -42,29 +43,20 @@ void printEntireLibrary() {
     }
   }
 }
+
+struct node * searchSong(char *songToFind, char *artistToFind) {
+  int nth_letter = nthLetter(artistToFind);
+  struct node * output = findSong(table[nth_letter-1], songToFind);
+  return output;
+}
+
+struct node * searchArtist(char *artistToFind) {
+  int nth_letter = nthLetter(artistToFind);
+  struct node * output = findSongByArtist(table[nth_letter], artistToFind);
+  return output;
+}
+
 /*
-
-struct node * searchSong(char *sn, char *art) {
-  struct node *no = table[(int)artist[0] - 65];
-  for(no != NULL) {
-    if(strcmp(sn, no->songName) == 0) {
-      return no;
-    }
-    no = no->nextNode;
-  }
-  return NULL;
-}
-
-int searchArtist(char *art) {
-  struct node *no = table[(int)art[0] - 65];
-  for(no != NULL) {
-    if(strcmp(art, no->artist) == 0) {
-      return true;
-    }
-  }
-  return NULL;
-}
-
 void printLetter(char let) {
   int le = (int)let;
   if(le > 96) {le = le - 32;}
