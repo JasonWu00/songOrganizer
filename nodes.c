@@ -34,6 +34,21 @@ struct node * insertAtFront(struct node *headOfList, char *newSong, char *newArt
   return newHead;
 }
 
+struct node * insertInMiddle(struct node *headOfList, char *newSong, char *newArtist, int goThisMuchFarther) {
+  //helper function (now functional)
+  if (goThisMuchFarther == 0) {
+    //struct node * nodeBefore = headOfList->previousNode;
+    headOfList = insertAtFront(headOfList, newSong, newArtist);
+    //nodeBefore->nextNode = headOfList;
+    //headOfList->previousNode = nodeBefore;
+    return headOfList;
+  }
+  else {
+    headOfList->nextNode = insertInMiddle(headOfList->nextNode, newSong, newArtist, goThisMuchFarther-1);
+  }
+  return headOfList;
+}
+
 struct node * insertInOrder(struct node *headOfList, char *newSong, char *newArtist) {
   char targetSong[25];
   char targetArtist[25];

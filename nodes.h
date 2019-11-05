@@ -7,6 +7,7 @@ struct node{
 
 void printList(struct node *headOfList);
 struct node * insertAtFront(struct node *headOfList, char *newSong, char *newArtist);
+struct node * insertInMiddle(struct node *headOfList, char *newSong, char *newArtist, int goThisMuchFarther);
 struct node * insertInOrder(struct node *headOfList, char *newSong, char *newArtist);
 struct node * freeList(struct node *headOfList);
 struct node * removeNode(struct node *headOfList, const char *targetSong, const char *targetArtist);

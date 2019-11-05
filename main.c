@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "nodes.h"
 #include "library.h"
 
 int main() {
+  srand(time(NULL));
   struct node *headOfList = NULL;
 
   printf("Printing an empty list:\n");
@@ -105,6 +107,13 @@ int main() {
   printLetter("E");
   printf("\n\n");
 
+  printf("-----Testing shuffle-----\n\n");
+
+  printf("Printing out a random shuffle that contains all the songs in the library:\n");
+  printf("(The method uses a linked list to store the shuffled songs.) \n(The list will be freed after printing.)\n");
+  printShuffle();
+  printf("\n");
+
   printf("-----Testing removing single node-----\n\n");
   printf("Removing song \"Highway to Hell\" by \"ACDC\"\n");
   removeSong("Highway to Hell", "ACDC");
@@ -115,6 +124,8 @@ int main() {
   clearLib();
   printf("Library cleared, now printing library (nothing will print)\n");
   printEntireLibrary();
+  printf("\n");
+
 
   /*
   */

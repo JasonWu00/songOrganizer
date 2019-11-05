@@ -11,3 +11,4 @@ void printSongsByArtist(char *artistToFind);
 void printLib();
 struct node * removeSong(char *songName, char *artistName);
 struct node * clearLib();
+void printShuffle();
